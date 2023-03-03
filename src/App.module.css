@@ -1,0 +1,13 @@
+.profile-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.profile-photo {
+  object-fit: cover;
+  width: 50vw;
+  height: 50vw;
+}
