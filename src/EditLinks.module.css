@@ -1,0 +1,23 @@
+.edit-links__parent {
+  display: flex;
+}
+
+.edit-links {
+  display: flex;
+  flex-direction: column;
+  margin-left: 3vw;
+}
+
+.edit-links input {
+  height: 5vh;
+  margin-bottom: 2px;
+  border: none;
+  border-bottom: 2px solid rgb(146, 146, 146);
+}
+
+.add-button {
+  border-radius: 100%;
+  width: 3vh;
+  height: 3vh;
+  border: none;
+}

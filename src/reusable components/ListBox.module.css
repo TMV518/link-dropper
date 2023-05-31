@@ -4,6 +4,8 @@
   position: fixed;
   bottom: 0;
   background-color: white;
+  animation-name: list-box__parent__anim;
+  animation-duration: 0.3s;
 }
 
 .list-box__x-button {
@@ -17,4 +19,14 @@
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
+}
+
+@keyframes list-box__parent__anim {
+  from {
+    transform: translateY(100%);
+  }
+
+  to {
+    transform: translateY(0%);
+  }
 }

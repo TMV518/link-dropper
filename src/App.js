@@ -2,11 +2,16 @@ import classes from "./App.module.css";
 import { useEffect, useRef, useState } from "react";
 import { ColorPicker, useColor } from "react-color-palette";
 import "react-color-palette/lib/css/styles.css";
-import SideButton from "./reusable components/SideButton";
-import SideButtonHolder from "./reusable components/SideButtonHolder";
+
 import EditPage from "./EditPage";
 import { useSelector } from "react-redux";
-import EditSideButtons from "./EditSideButtons";
+
+import EditLinks from "./EditLinks";
+import EditTitle from "./EditTitle";
+import EditTextBorder from "./EditTextBorder";
+import EditProfileRadius from "./EditProfileRadius";
+import { Link, Route, Routes, BrowserRouter as Router } from "react-router-dom";
+import EditFontFamily from "./EditFontFamily";
 
 function App() {
   //custom hook from react-color-palette
@@ -23,53 +28,31 @@ function App() {
   //   setWindowSize([window.innerWidth, window.innerHeight]);
   // }, [window.innerWidth, window.innerHeight]);
 
-  const [fontPopUp, setFontPopUp] = useState(true);
-
+  const title = useSelector((state) => state.title.title);
   const fontFamily = useSelector((state) => state.fontFamily.fontFamily);
   const borderStyle = useSelector((state) => state.borderStyle.borderStyle);
   const profileRadius = useSelector(
     (state) => state.profileRadius.profileRadius
   );
+  const linkList = useSelector((state) => state.linkList.linkList);
 
   return (
     <div className={classes["app-wrapper"]}>
-      {/*<ColorPicker
-        width={456}
-        height={228}
-        color={color}
-        onChange={setColor}
-        onChangeComplete={() => {
-          console.log(color.hex);
-        }}
-        hideHSV
-        dark
-      />*/}
-      {/* {fontPopUp && (
-        <ListBox>
-          <ListBoxButton fontFamily="Times New Roman" value="Times New Roman">
-            Times New Roman
-          </ListBoxButton>
-          <ListBoxButton fontFamily="Comic Sans MS" value="Comic Sans MS">
-            Comic Sans MS
-          </ListBoxButton>
-        </ListBox>
-        // <ListBox>
-        //   <ColorPicker
-        //     width={window.innerWidth}
-        //     height={100}
-        //     color={color}
-        //     onChange={setColor}
-        //     onChangeComplete={() => {
-        //       console.log(color.hex);
-        //     }}
-        //     hideHSV
-        //     dark
-        //   />
-        // </ListBox>
-      )} */}
-      <EditPage />
+      <Router>
+        <Link to="edit">
+          <button>Edit</button>
+        </Link>
 
-      {/* <EditSideButtons /> */}
+        <Routes>
+          <Route exact path="edit" element={<EditPage />} />
+          <Route path="edit/title" element={<EditTitle />} />
+          <Route path="edit/links" element={<EditLinks />} />
+          <Route path="edit/font" element={<EditFontFamily />} />
+          <Route path="edit/profile-shape" element={<EditProfileRadius />} />
+          <Route path="edit/text-border" element={<EditTextBorder />} />
+        </Routes>
+      </Router>
+
       <div
         className={classes["profile-wrapper"]}
         style={{ backgroundColor: color.hex, fontFamily: fontFamily }}
@@ -80,12 +63,15 @@ function App() {
           src={require("./assets/penguin_placeholder.png")}
           style={{ borderRadius: profileRadius }}
         />
-        <h1>Penguin :)</h1>
-        <h2>Links</h2>
+        <h1>{title}</h1>
         <ul>
-          <li style={{ borderStyle: borderStyle }}>Instagram</li>
-          <li style={{ borderStyle: borderStyle }}>Twitter</li>
-          <li style={{ borderStyle: borderStyle }}>LinkedIn</li>
+          {linkList.map((linkObj) => {
+            return (
+              <li key={linkObj.key} style={{ borderStyle: borderStyle }}>
+                <a href={linkObj.link}>{linkObj.name}</a>
+              </li>
+            );
+          })}
         </ul>
       </div>
     </div>

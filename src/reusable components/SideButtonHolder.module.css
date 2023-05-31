@@ -5,4 +5,15 @@
   display: flex;
   flex-direction: column;
   margin-right: 10px;
+  animation-name: button-holder__anim;
+  animation-duration: 0.5s;
+}
+
+@keyframes button-holder__anim {
+  from {
+    margin-right: -100px;
+  }
+  to {
+    margin-right: 10px;
+  }
 }

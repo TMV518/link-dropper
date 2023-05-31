@@ -1,9 +1,12 @@
 import { createSlice, configureStore } from "@reduxjs/toolkit";
+import uuid from "react-uuid";
 
 //initial state
 const initialState = {
-  title: "",
-  linkList: [],
+  title: "My links",
+  linkList: [
+    { name: "Instagram", link: "https://www.instagram.com", key: uuid() },
+  ],
   bgColor: "",
   fontFamiy: "",
   textColor: "",
@@ -14,7 +17,33 @@ const initialState = {
 
 //SLICES
 
-//text edit
+//title edit
+const titleSlice = createSlice({
+  name: "title",
+  initialState: initialState,
+  reducers: {
+    setTitle(state, action) {
+      state.title = action.payload;
+    },
+  },
+});
+
+//links
+const linkSlice = createSlice({
+  name: "linkList",
+  initialState: initialState,
+  reducers: {
+    addLink(state, action) {
+      state.linkList.unshift(action.payload);
+    },
+    removeLink() {},
+    moveUp() {},
+    moveDown() {},
+    saveList(state, action) {
+      state.linkList = action.payload;
+    },
+  },
+});
 
 //background color
 const bgColorSlice = createSlice({
@@ -67,6 +96,8 @@ export const store = configureStore({
     fontFamily: fontFamilySlice.reducer,
     borderStyle: borderSlice.reducer,
     profileRadius: profileRadiusSlice.reducer,
+    title: titleSlice.reducer,
+    linkList: linkSlice.reducer,
   },
 });
 
@@ -74,3 +105,5 @@ export const bgColorActions = bgColorSlice.actions;
 export const fontFamilyActions = fontFamilySlice.actions;
 export const borderStyleActions = borderSlice.actions;
 export const profileRadiusActions = profileRadiusSlice.actions;
+export const titleActions = titleSlice.actions;
+export const linkActions = linkSlice.actions;
