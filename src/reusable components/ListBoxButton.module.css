@@ -1,0 +1,10 @@
+.list-box__button {
+  margin-top: 10px;
+  font-size: 5vh;
+  border: none;
+  background-color: white;
+}
+
+.list-box__button:hover {
+  cursor: pointer;
+}

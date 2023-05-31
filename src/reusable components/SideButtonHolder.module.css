@@ -1,0 +1,8 @@
+.side-button__holder {
+  position: fixed;
+  top: 2%;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  margin-right: 10px;
+}

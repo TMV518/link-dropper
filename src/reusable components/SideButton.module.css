@@ -1,0 +1,10 @@
+.side-button {
+  border-radius: 100%;
+  border: none;
+  width: 10vh;
+  height: 10vh;
+  color: black;
+  background-color: white;
+  box-shadow: -1px -3px 10px rgba(0, 0, 0, 0.527);
+  margin-bottom: 2vh;
+}
