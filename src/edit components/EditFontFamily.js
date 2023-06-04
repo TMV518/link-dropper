@@ -1,7 +1,7 @@
-import ListBox from "./reusable components/ListBox";
-import ListBoxButton from "./reusable components/ListBoxButton";
+import ListBox from "../reusable components/ListBox";
+import ListBoxButton from "../reusable components/ListBoxButton";
 import { useDispatch } from "react-redux";
-import { fontFamilyActions } from "./store/index";
+import { fontFamilyActions } from "../store/index";
 
 const EditFontFamily = () => {
   const dispatch = useDispatch();

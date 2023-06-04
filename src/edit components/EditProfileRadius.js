@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
-import { profileRadiusActions } from "./store/index";
-import ListBox from "./reusable components/ListBox";
-import ListBoxButton from "./reusable components/ListBoxButton";
+import { profileRadiusActions } from "../store/index";
+import ListBox from "../reusable components/ListBox";
+import ListBoxButton from "../reusable components/ListBoxButton";
 
 const EditProfileRadius = () => {
   const dispatch = useDispatch();

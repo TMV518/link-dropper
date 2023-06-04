@@ -1,5 +1,5 @@
-import SideButtonHolder from "./reusable components/SideButtonHolder";
-import SideButton from "./reusable components/SideButton";
+import SideButtonHolder from "../reusable components/SideButtonHolder";
+import SideButton from "../reusable components/SideButton";
 import { Link } from "react-router-dom";
 
 const EditSideButtons = () => {

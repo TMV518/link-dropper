@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
-import CoverPage from "./CoverPage";
-import { titleActions } from "./store/index";
+import CoverPage from "../reusable components/CoverPage";
+import { titleActions } from "../store/index";
 import { useState } from "react";
 const EditTitle = () => {
   //using selector to fill in stored title as default value

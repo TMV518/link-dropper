@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
-import ListBox from "./reusable components/ListBox";
-import ListBoxButton from "./reusable components/ListBoxButton";
-import { borderStyleActions } from "./store/index";
+import ListBox from "../reusable components/ListBox";
+import ListBoxButton from "../reusable components/ListBoxButton";
+import { borderStyleActions } from "../store/index";
 
 const EditTextBorder = () => {
   const dispatch = useDispatch();

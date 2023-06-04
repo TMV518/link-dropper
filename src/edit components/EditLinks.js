@@ -1,8 +1,8 @@
 import classes from "./EditLinks.module.css";
-import CoverPage from "./CoverPage";
+import CoverPage from "../reusable components/CoverPage";
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect, useRef } from "react";
-import { linkActions } from "./store/index";
+import { linkActions } from "../store/index";
 import uuid from "react-uuid";
 
 const EditLinks = () => {
@@ -27,7 +27,7 @@ const EditLinks = () => {
 
   //adds link object to temporary editList array
   const linkAddHandler = () => {
-    if (tempName && tempLink) {
+    if (tempName.trim() !== "" && tempLink.trim() !== "") {
       setFormIsValid(true);
 
       let tempList = [...editList];
@@ -57,6 +57,7 @@ const EditLinks = () => {
     console.log(editList);
   };
 
+  //moves link up in list
   const linkUpHandler = (linkKey) => {
     let tempList = [...editList];
 
@@ -77,6 +78,7 @@ const EditLinks = () => {
     console.log(linkKey + " moved up");
   };
 
+  //moves link down in list
   const linkDownHandler = (linkKey) => {
     let tempList = [...editList];
 

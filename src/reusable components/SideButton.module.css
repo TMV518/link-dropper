@@ -11,11 +11,7 @@
   animation-duration: 0.8s;
 }
 
-/* @keyframes button__anim {
-  from {
-    margin-top: 100vh;
-  }
-  to {
-    margin-top: 0vh;
-  }
+/* .side-button img {
+  width: 50%;
+  margin-top: 15%;
 } */
