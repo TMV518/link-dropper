@@ -1,0 +1,73 @@
+.auth__wrapper {
+  position: relative;
+}
+.auth__overlay {
+  background-color: rgba(229, 229, 229, 0.76);
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: block;
+  z-index: 50;
+  top: 0;
+}
+
+.signup__wrapper,
+.login__wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-right: 3vw;
+  margin-left: 3vw;
+}
+
+.signup__wrapper {
+  animation-name: signup-form__anim;
+  animation-duration: 0.3s;
+}
+
+.login__wrapper {
+  animation-name: login-form__anim;
+  animation-duration: 0.3s;
+}
+
+.top-buttons {
+  display: flex;
+}
+
+.top-buttons button {
+  flex: 1;
+  border: none;
+}
+
+.top-buttons button:hover {
+  border-bottom: 1px solid blue;
+}
+
+@keyframes login-form__anim {
+  from {
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes signup-form__anim {
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(0%);
+  }
+}
+
+/*@keyframes border-bottom__anim {
+    from {
+        border-bottom: ;
+      }
+    
+      to {
+        transform: translateX(0%);
+      }
+}*/
