@@ -125,7 +125,14 @@ const UserAuthPage = () => {
         >
           Sign Up
         </button>
-        <button onClick={loginPageHandler}>Login</button>
+        <button
+          onClick={loginPageHandler}
+          style={{
+            borderBottom: loginPage ? "1px solid blue" : "none",
+          }}
+        >
+          Login
+        </button>
       </div>
       {signUpPage && (
         <>

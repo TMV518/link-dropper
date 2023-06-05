@@ -38,10 +38,6 @@
   border: none;
 }
 
-.top-buttons button:hover {
-  border-bottom: 1px solid blue;
-}
-
 @keyframes login-form__anim {
   from {
     transform: translateX(100%);
@@ -62,12 +58,12 @@
   }
 }
 
-/*@keyframes border-bottom__anim {
-    from {
-        border-bottom: ;
-      }
-    
-      to {
-        transform: translateX(0%);
-      }
-}*/
+@keyframes border-bottom__anim {
+  from {
+    border-bottom: none;
+  }
+
+  to {
+    border-bottom: 1px solid blue;
+  }
+}
