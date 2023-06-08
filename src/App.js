@@ -13,7 +13,7 @@ import EditProfileRadius from "./edit components/EditProfileRadius";
 import { Link, Route, Routes, BrowserRouter as Router } from "react-router-dom";
 import EditFontFamily from "./edit components/EditFontFamily";
 import { db } from "./firebase/firebase-config.js";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, addDoc, setDoc, doc } from "firebase/firestore";
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
@@ -43,7 +43,9 @@ function App() {
     }
   };
 
+  //profile state variables
   const [profileColor, setProfileColor] = useState("white");
+  
 
   useEffect(() => {
     try {
@@ -61,6 +63,35 @@ function App() {
     (state) => state.profileRadius.profileRadius
   );
   const linkList = useSelector((state) => state.linkList.linkList);
+  
+  
+  //posts profile changes to firebase
+  const postChanges = async () => {
+    console.log("POST CHANGES");
+    setProfile({
+      title: title,
+      linkList: linkList,
+      bgColor: "red",
+      fontFamily: fontFamily,
+      textColor: "white",
+      profilePic: "",
+      profileRadius: profileRadius,
+      borderStyle: borderStyle
+    });
+    console.log(profile);
+
+    await setDoc(doc(db, "test", "profile"), {
+      title: title,
+      linkList: linkList,
+      bgColor: "orange",
+      fontFamily: "dunno let's fix this later",
+      textColor: "white",
+      profilePic: "",
+      profileRadius: profileRadius,
+      borderStyle: borderStyle
+    });
+
+  }
 
   return (
     <div className={classes["app-wrapper"]}>
@@ -70,6 +101,11 @@ function App() {
           <button>Edit</button>
         </Link>
         <button onClick={getProfileProps}>Fetch</button>
+
+        <div className={classes["save-buttons"]}>
+          <button className={classes.save} onClick={postChanges}>Save</button>
+          <button className={classes.discard}>Discard</button>
+        </div>
 
         <Routes>
           <Route exact path="edit" element={<EditPage />} />
