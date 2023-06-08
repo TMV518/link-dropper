@@ -110,6 +110,7 @@ const UserAuthPage = () => {
     setLoading(false);
   };
 
+  //handles logging out
   const logout = async () => {
     await signOut(auth);
   };

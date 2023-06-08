@@ -1,16 +1,19 @@
 import classes from "./ListBox.module.css";
+import { Link } from "react-router-dom";
 
 const ListBox = (props) => {
   return (
     <div className={classes["list-box__parent"]}>
-      <button
-        className={classes["list-box__x-button"]}
-        // onClick={() => {
-        //   setFontPopUp((prev) => !prev);
-        // }}
-      >
-        X Close
-      </button>
+      <Link to="/edit">
+        <button
+          className={classes["list-box__x-button"]}
+          // onClick={() => {
+          //   setFontPopUp((prev) => !prev);
+          // }}
+        >
+          X Close
+        </button>
+      </Link>
       <div className={classes["list-box"]}>
         {props.children}
         {/* <button
