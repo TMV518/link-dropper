@@ -104,10 +104,11 @@ function App() {
 
         <div className={classes["save-buttons"]}>
           <button className={classes.save} onClick={postChanges}>Save</button>
-          <button className={classes.discard}>Discard</button>
+          <Link to="/profile"><button className={classes.discard}>Discard</button></Link>
         </div>
 
         <Routes>
+          <Route exact path="profile" element={""} />
           <Route exact path="edit" element={<EditPage />} />
           <Route path="edit/title" element={<EditTitle />} />
           <Route path="edit/links" element={<EditLinks />} />
