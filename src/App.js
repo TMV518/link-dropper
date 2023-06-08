@@ -95,7 +95,7 @@ function App() {
 
   return (
     <div className={classes["app-wrapper"]}>
-      <UserAuthPage />
+      {/*<UserAuthPage />*/}
       <Router>
         <Link to="edit">
           <button>Edit</button>
@@ -108,6 +108,7 @@ function App() {
         </div>
 
         <Routes>
+          <Route exact path="auth" element={<UserAuthPage/>}/>
           <Route exact path="profile" element={""} />
           <Route exact path="edit" element={<EditPage />} />
           <Route path="edit/title" element={<EditTitle />} />
