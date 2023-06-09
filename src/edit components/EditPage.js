@@ -2,13 +2,15 @@ import EditFontFamily from "./EditFontFamily";
 import EditProfileRadius from "./EditProfileRadius";
 import EditTextBorder from "./EditTextBorder";
 import EditSideButtons from "./EditSideButtons";
+import Profile from "../Profile";
 
 const EditPage = () => {
-  //return; <EditFontFamily />;
-  //return <EditTextBorder />;
+  
   return (
-    <EditSideButtons />
-    /* <EditProfileRadius /> */
+    <><EditSideButtons />
+    <Profile/></>
+    
+    
   );
 };
 

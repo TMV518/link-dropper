@@ -22,6 +22,7 @@ import {
 } from "firebase/auth";
 import { auth } from "./firebase/firebase-config.js";
 import UserAuthPage from "./UserAuthPage";
+import Profile from "./Profile";
 
 function App() {
   //custom hook from react-color-palette
@@ -48,13 +49,13 @@ function App() {
   
 
   useEffect(() => {
-    try {
-      console.log(profile[0]);
-      setProfileColor(profile[0].bgColor);
-    } catch (error) {
-      console.log(error.message);
-    }
-  }, [profile]);
+     try {
+       console.log(profile[0]);
+       setProfileColor(profile[0].bgColor);
+     } catch (error) {
+       console.log(error.message);
+     }
+   }, [profile]);
 
   const title = useSelector((state) => state.title.title);
   const fontFamily = useSelector((state) => state.fontFamily.fontFamily);
@@ -109,7 +110,7 @@ function App() {
 
         <Routes>
           <Route exact path="auth" element={<UserAuthPage/>}/>
-          <Route exact path="profile" element={""} />
+          <Route exact path="profile" element={<Profile/>} />
           <Route exact path="edit" element={<EditPage />} />
           <Route path="edit/title" element={<EditTitle />} />
           <Route path="edit/links" element={<EditLinks />} />
@@ -119,7 +120,7 @@ function App() {
         </Routes>
       </Router>
 
-      <div
+      {/* <div
         className={classes["profile-wrapper"]}
         style={{ backgroundColor: profileColor, fontFamily: fontFamily }}
       >
@@ -139,7 +140,7 @@ function App() {
             );
           })}
         </ul>
-      </div>
+      </div> */}
     </div>
   );
 }
