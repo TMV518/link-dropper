@@ -8,10 +8,37 @@
 
 .profile-photo {
   object-fit: cover;
-  width: 50vw;
-  height: 50vw;
+  width: 30vw;
+  height: 30vw;
 }
 
 li {
   list-style-type: none;
+}
+
+.save-buttons {
+  position: fixed;
+  bottom: 5%;
+  margin-left: 10px;
+}
+
+.save-buttons button {
+  background-color: blue;
+  color: white;
+  border: none;
+  border-radius: 10px; 
+  
+  
+}
+
+.save {
+  margin-right: 5vw;
+  width: 15vw;
+  height: 10vw;
+}
+
+
+.discard {
+  width: 20vw;
+  height: 10vw;
 }

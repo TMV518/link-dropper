@@ -1,11 +1,12 @@
 import { createSlice, configureStore } from "@reduxjs/toolkit";
 import uuid from "react-uuid";
 
+
 //initial state
 const initialState = {
-  title: "My links",
+  title: "My Links",
   linkList: [
-    { name: "Instagram", link: "https://www.instagram.com", key: uuid() },
+    {name:"Instagram", link:"https://www.instagram.com",key:uuid()}
   ],
   bgColor: "",
   fontFamiy: "",

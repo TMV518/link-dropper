@@ -1,0 +1,17 @@
+.profile-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .profile-photo {
+    object-fit: cover;
+    width: 30vw;
+    height: 30vw;
+  }
+  
+  li {
+    list-style-type: none;
+  }
