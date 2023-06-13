@@ -1,21 +1,3 @@
-.profile-wrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.profile-photo {
-  object-fit: cover;
-  width: 30vw;
-  height: 30vw;
-}
-
-li {
-  list-style-type: none;
-}
-
 .save-buttons {
   position: fixed;
   bottom: 5%;
@@ -26,9 +8,7 @@ li {
   background-color: blue;
   color: white;
   border: none;
-  border-radius: 10px; 
-  
-  
+  border-radius: 10px;
 }
 
 .save {
@@ -36,7 +16,6 @@ li {
   width: 15vw;
   height: 10vw;
 }
-
 
 .discard {
   width: 20vw;

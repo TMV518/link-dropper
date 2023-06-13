@@ -33,16 +33,6 @@ function App() {
   const [profile, setProfile] = useState();
 
   const profileRef = collection(db, "test");
-  //test function to fetch from database
-  const getProfileProps = async () => {
-    try {
-      const data = await getDocs(profileRef);
-      //console.log(data.docs);
-      setProfile(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
 
   //profile state variables
   const [profileColor, setProfileColor] = useState("white");
@@ -93,12 +83,11 @@ function App() {
 
   return (
     <div className={classes["app-wrapper"]}>
-      <UserAuthPage />
+      {/* <UserAuthPage /> */}
       <Router>
         <Link to="edit">
           <button>Edit</button>
         </Link>
-        <button onClick={getProfileProps}>Fetch</button>
 
         <div className={classes["save-buttons"]}>
           <button className={classes.save} onClick={postChanges}>
@@ -118,7 +107,10 @@ function App() {
           <Route path="edit/profile-shape" element={<EditProfileRadius />} />
           <Route path="edit/text-border" element={<EditTextBorder />} />
           <Route path="signin" element={<UserAuthPage />} />
-          <Route path="user" element={<UserProfile />} />
+          <Route
+            path="user"
+            element={<UserProfile uid={"HqAkm4wDGFYjxRKSsnRnL2oy2h53"} />}
+          />
         </Routes>
       </Router>
 

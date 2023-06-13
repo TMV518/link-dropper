@@ -60,7 +60,7 @@ const UserAuthPage = () => {
         { name: "Link 3", link: "", key: uuid() },
       ],
       bgColor: "white",
-      fontFamiy: "Times New Roman",
+      fontFamily: "Times New Roman",
       textColor: "black",
       profilePic: "./assets/penguin_placeholder.png",
       profileRadius: "50%",
