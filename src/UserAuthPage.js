@@ -6,7 +6,10 @@ import {
 } from "firebase/auth";
 import { auth } from "./firebase/firebase-config.js";
 import { useState, useEffect } from "react";
+import { db } from "./firebase/firebase-config.js";
+import { collection, addDoc, setDoc, doc } from "firebase/firestore";
 import classes from "./UserAuthPage.module.css";
+import uuid from "react-uuid";
 
 const UserAuthPage = () => {
   //AUTHENTICATION
@@ -44,6 +47,28 @@ const UserAuthPage = () => {
     });
   }, []);
 
+  const userProfileDbRef = collection(db, "users");
+
+  //creating the default profile upon account creation
+  const createProfile = async (user) => {
+    //creating user profile page
+    const defaultProfile = {
+      title: "My Links",
+      linkList: [
+        { name: "Link 1", link: "", key: uuid() },
+        { name: "Link 2", link: "", key: uuid() },
+        { name: "Link 3", link: "", key: uuid() },
+      ],
+      bgColor: "white",
+      fontFamiy: "Times New Roman",
+      textColor: "black",
+      profilePic: "./assets/penguin_placeholder.png",
+      profileRadius: "50%",
+      borderStyle: "none",
+    };
+
+    await setDoc(doc(userProfileDbRef, user.uid), defaultProfile);
+  };
   //creates user account
   const signUp = async (event) => {
     event.preventDefault();
@@ -55,6 +80,9 @@ const UserAuthPage = () => {
         signUpEmail,
         signUpPassword
       );
+
+      console.log("UID:", auth.currentUser.uid);
+      createProfile(auth.currentUser);
     } catch (error) {
       console.log(error.message);
       console.log("error.code: " + error.code);
@@ -117,6 +145,7 @@ const UserAuthPage = () => {
 
   return (
     <div className={classes["auth__wrapper"]}>
+      <h2>Sign In</h2>
       <div className={classes["top-buttons"]}>
         <button
           style={{

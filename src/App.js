@@ -22,6 +22,7 @@ import {
 } from "firebase/auth";
 import { auth } from "./firebase/firebase-config.js";
 import UserAuthPage from "./UserAuthPage";
+import UserProfile from "./UserProfile";
 
 function App() {
   //custom hook from react-color-palette
@@ -64,7 +65,7 @@ function App() {
 
   return (
     <div className={classes["app-wrapper"]}>
-      <UserAuthPage />
+      {/* <UserAuthPage /> */}
       <Router>
         <Link to="edit">
           <button>Edit</button>
@@ -78,10 +79,12 @@ function App() {
           <Route path="edit/font" element={<EditFontFamily />} />
           <Route path="edit/profile-shape" element={<EditProfileRadius />} />
           <Route path="edit/text-border" element={<EditTextBorder />} />
+          <Route path="signin" element={<UserAuthPage />} />
+          <Route path="user" element={<UserProfile />} />
         </Routes>
       </Router>
 
-      <div
+      {/* <div
         className={classes["profile-wrapper"]}
         style={{ backgroundColor: profileColor, fontFamily: fontFamily }}
       >
@@ -101,7 +104,7 @@ function App() {
             );
           })}
         </ul>
-      </div>
+      </div> */}
     </div>
   );
 }
