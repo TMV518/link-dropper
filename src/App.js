@@ -46,6 +46,8 @@ function App() {
     }
   }, [profile]);
 
+  const id = useSelector((state) => state.uid.uid);
+
   const title = useSelector((state) => state.title.title);
   const fontFamily = useSelector((state) => state.fontFamily.fontFamily);
   const borderStyle = useSelector((state) => state.borderStyle.borderStyle);
@@ -83,9 +85,8 @@ function App() {
 
   return (
     <div className={classes["app-wrapper"]}>
-      {/* <UserAuthPage /> */}
       <Router>
-        <Link to="edit">
+        <Link to={`user/${id}/edit`}>
           <button>Edit</button>
         </Link>
 
@@ -93,24 +94,27 @@ function App() {
           <button className={classes.save} onClick={postChanges}>
             Save
           </button>
-          <Link to="/profile">
+          <Link to={`user/${id}`}>
             <button className={classes.discard}>Discard</button>
           </Link>
         </div>
 
         <Routes>
           <Route exact path="auth" element={<UserAuthPage />} />
-          <Route exact path="edit" element={<EditPage />} />
-          <Route path="edit/title" element={<EditTitle />} />
-          <Route path="edit/links" element={<EditLinks />} />
-          <Route path="edit/font" element={<EditFontFamily />} />
-          <Route path="edit/profile-shape" element={<EditProfileRadius />} />
-          <Route path="edit/text-border" element={<EditTextBorder />} />
-          <Route path="signin" element={<UserAuthPage />} />
+          <Route exact path="user/:id/edit" element={<EditPage />} />
+          <Route path="user/:id/edit/title" element={<EditTitle />} />
+          <Route path="user/:id/edit/links" element={<EditLinks />} />
+          <Route path="user/:id/edit/font" element={<EditFontFamily />} />
           <Route
-            path="user"
-            element={<UserProfile uid={"HqAkm4wDGFYjxRKSsnRnL2oy2h53"} />}
+            path="user/:id/edit/profile-shape"
+            element={<EditProfileRadius />}
           />
+          <Route
+            path="user/:id/edit/text-border"
+            element={<EditTextBorder />}
+          />
+          <Route path="signin" element={<UserAuthPage />} />
+          <Route path="user/:id" element={<UserProfile />} />
         </Routes>
       </Router>
 

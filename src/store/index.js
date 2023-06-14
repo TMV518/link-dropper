@@ -1,12 +1,11 @@
 import { createSlice, configureStore } from "@reduxjs/toolkit";
 import uuid from "react-uuid";
 
-
 //initial state
 const initialState = {
   title: "My Links",
   linkList: [
-    {name:"Instagram", link:"https://www.instagram.com",key:uuid()}
+    { name: "Instagram", link: "https://www.instagram.com", key: uuid() },
   ],
   bgColor: "",
   fontFamiy: "",
@@ -14,9 +13,21 @@ const initialState = {
   profilePic: "",
   profileRadius: 0,
   borderStyle: "none",
+  uid: "",
 };
 
 //SLICES
+
+//user ID slice
+const uidSlice = createSlice({
+  name: "uid",
+  initialState: initialState,
+  reducers: {
+    setUID(state, action) {
+      state.uid = action.payload;
+    },
+  },
+});
 
 //title edit
 const titleSlice = createSlice({
@@ -99,6 +110,7 @@ export const store = configureStore({
     profileRadius: profileRadiusSlice.reducer,
     title: titleSlice.reducer,
     linkList: linkSlice.reducer,
+    uid: uidSlice.reducer,
   },
 });
 
@@ -108,3 +120,4 @@ export const borderStyleActions = borderSlice.actions;
 export const profileRadiusActions = profileRadiusSlice.actions;
 export const titleActions = titleSlice.actions;
 export const linkActions = linkSlice.actions;
+export const uidActions = uidSlice.actions;

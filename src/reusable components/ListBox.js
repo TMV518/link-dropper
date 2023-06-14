@@ -1,10 +1,12 @@
 import classes from "./ListBox.module.css";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const ListBox = (props) => {
+  const id = useSelector((state) => state.uid.uid);
   return (
     <div className={classes["list-box__parent"]}>
-      <Link to="/edit">
+      <Link to={`../../user/${id}/edit`}>
         <button
           className={classes["list-box__x-button"]}
           // onClick={() => {
@@ -14,36 +16,7 @@ const ListBox = (props) => {
           X Close
         </button>
       </Link>
-      <div className={classes["list-box"]}>
-        {props.children}
-        {/* <button
-          //   onClick={(e) => {
-          //     changeFontHandler(e);
-          //   }}
-          value="Times New Roman"
-          style={{ fontFamily: "Times New Roman" }}
-        >
-          Times New Roman
-        </button>
-        <button value="Comic Sans MS" style={{ fontFamily: "Comic Sans MS" }}>
-          Comic Sans
-        </button>
-        <button value="Arial" style={{ fontFamily: "Arial" }}>
-          Arial
-        </button>
-        <button value="Impact" style={{ fontFamily: "Impact" }}>
-          Impact
-        </button>
-        <button value="Georgia" style={{ fontFamily: "Georgia" }}>
-          Georgia
-        </button>
-        <button
-          value="Brush Script MT"
-          style={{ fontFamily: "Brush Script MT" }}
-        >
-          Brush Script MT
-        </button> */}
-      </div>
+      <div className={classes["list-box"]}>{props.children}</div>
     </div>
   );
 };

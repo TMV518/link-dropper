@@ -1,12 +1,13 @@
 import classes from "./CoverPage.module.css";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const CoverPage = (props) => {
-  const closeCoverPage = () => {};
+  const id = useSelector((state) => state.uid.uid);
 
   return (
     <div className={classes["cover-page"]}>
-      <Link to="/edit">
+      <Link to={`../../user/${id}/edit`}>
         <button>X</button>
       </Link>
       {props.children}

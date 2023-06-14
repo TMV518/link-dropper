@@ -1,8 +1,12 @@
 import SideButtonHolder from "../reusable components/SideButtonHolder";
 import SideButton from "../reusable components/SideButton";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const EditSideButtons = () => {
+  //getting id for url
+  const id = useSelector((state) => state.uid.uid);
+  console.log(id);
   return (
     <SideButtonHolder>
       <Link to="title">

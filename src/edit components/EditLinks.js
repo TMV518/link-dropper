@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect, useRef } from "react";
 import { linkActions } from "../store/index";
 import uuid from "react-uuid";
+import UserProfile from "../UserProfile";
 
 const EditLinks = () => {
   //used for clearing form values
@@ -106,78 +107,81 @@ const EditLinks = () => {
   };
 
   return (
-    <CoverPage>
-      <button onClick={saveList}>Save</button>
-      <h3>Edit the links on your page</h3>
-      <h4>Add a link</h4>
-      <div className={classes["edit-links__parent"]}>
-        <button className={classes["add-button"]} onClick={linkAddHandler}>
-          +
-        </button>
-        <div className={classes["edit-links"]}>
-          <input
-            ref={nameRef}
-            type="text"
-            placeholder="Name"
-            onChange={(e) => {
-              setTempName(e.target.value);
-            }}
-          />
-          <input
-            ref={linkRef}
-            type="text"
-            placeholder="Link"
-            onChange={(e) => {
-              setTempLink(e.target.value);
-            }}
-          />
+    <>
+      <CoverPage>
+        <button onClick={saveList}>Save</button>
+        <h3>Edit the links on your page</h3>
+        <h4>Add a link</h4>
+        <div className={classes["edit-links__parent"]}>
+          <button className={classes["add-button"]} onClick={linkAddHandler}>
+            +
+          </button>
+          <div className={classes["edit-links"]}>
+            <input
+              ref={nameRef}
+              type="text"
+              placeholder="Name"
+              onChange={(e) => {
+                setTempName(e.target.value);
+              }}
+            />
+            <input
+              ref={linkRef}
+              type="text"
+              placeholder="Link"
+              onChange={(e) => {
+                setTempLink(e.target.value);
+              }}
+            />
+          </div>
         </div>
-      </div>
-      {!formIsValid && (
-        <p style={{ color: "red" }}>Name and link are required fields</p>
-      )}
-      <h4>Remove links or change their order</h4>
-      <div className={classes["link-list"]}>
-        <ul>
-          {editList.map((linkObj, index) => {
-            return (
-              <li key={linkObj.key}>
-                <button
-                  value={linkObj.key}
-                  onClick={(e) => {
-                    linkRemoveHandler(e.target.value);
-                  }}
-                >
-                  X
-                </button>
-                <a href={linkObj.link}>{linkObj.name}</a>
-                {index !== 0 && (
+        {!formIsValid && (
+          <p style={{ color: "red" }}>Name and link are required fields</p>
+        )}
+        <h4>Remove links or change their order</h4>
+        <div className={classes["link-list"]}>
+          <ul>
+            {editList.map((linkObj, index) => {
+              return (
+                <li key={linkObj.key}>
                   <button
                     value={linkObj.key}
                     onClick={(e) => {
-                      linkUpHandler(e.target.value);
+                      linkRemoveHandler(e.target.value);
                     }}
                   >
-                    up
+                    X
                   </button>
-                )}
-                {index !== editList.length - 1 && (
-                  <button
-                    value={linkObj.key}
-                    onClick={(e) => {
-                      linkDownHandler(e.target.value);
-                    }}
-                  >
-                    down
-                  </button>
-                )}
-              </li>
-            );
-          })}
-          {editList.length === 0 && <p>No links yet!</p>}
-        </ul>
-      </div>
-    </CoverPage>
+                  <a href={linkObj.link}>{linkObj.name}</a>
+                  {index !== 0 && (
+                    <button
+                      value={linkObj.key}
+                      onClick={(e) => {
+                        linkUpHandler(e.target.value);
+                      }}
+                    >
+                      up
+                    </button>
+                  )}
+                  {index !== editList.length - 1 && (
+                    <button
+                      value={linkObj.key}
+                      onClick={(e) => {
+                        linkDownHandler(e.target.value);
+                      }}
+                    >
+                      down
+                    </button>
+                  )}
+                </li>
+              );
+            })}
+            {editList.length === 0 && <p>No links yet!</p>}
+          </ul>
+        </div>
+      </CoverPage>
+      <UserProfile />
+    </>
   );
 };
 

@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import CoverPage from "../reusable components/CoverPage";
 import { titleActions } from "../store/index";
 import { useState } from "react";
+import UserProfile from "../UserProfile";
 const EditTitle = () => {
   //using selector to fill in stored title as default value
   const title = useSelector((state) => state.title.title);
@@ -19,19 +20,22 @@ const EditTitle = () => {
   };
 
   return (
-    <CoverPage>
-      <form onSubmit={titleChangeHandler}>
-        <input
-          type="text"
-          placeholder="Enter a title"
-          defaultValue={title}
-          onChange={(e) => {
-            setTempTitle(e.target.value);
-          }}
-        />
-        <button type="submit">Submit</button>
-      </form>
-    </CoverPage>
+    <>
+      <CoverPage>
+        <form onSubmit={titleChangeHandler}>
+          <input
+            type="text"
+            placeholder="Enter a title"
+            defaultValue={title}
+            onChange={(e) => {
+              setTempTitle(e.target.value);
+            }}
+          />
+          <button type="submit">Submit</button>
+        </form>
+      </CoverPage>
+      <UserProfile />
+    </>
   );
 };
 
