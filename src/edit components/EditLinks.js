@@ -5,7 +5,7 @@ import { useState, useEffect, useRef } from "react";
 import { linkActions } from "../store/index";
 import uuid from "react-uuid";
 import UserProfile from "../UserProfile";
-import { updateDoc, doc } from "firebase/firestore";
+import { updateDoc, doc, getDoc } from "firebase/firestore";
 import { db } from "../firebase/firebase-config";
 
 const EditLinks = () => {
@@ -20,11 +20,6 @@ const EditLinks = () => {
   const [tempName, setTempName] = useState("");
   const [tempLink, setTempLink] = useState("");
   const [editList, setEditList] = useState([]);
-
-  useEffect(() => {
-    console.log("USE EFFECT");
-    setEditList(linkList);
-  }, []);
 
   const dispatch = useDispatch();
 
@@ -107,6 +102,24 @@ const EditLinks = () => {
 
   //getting reference to database
   const userProfileRef = doc(db, "users", id);
+
+  useEffect(() => {
+    //getting stored list data from firebase and dispatching it to the redux state
+    async function fetchData() {
+      try {
+        const userDoc = await getDoc(userProfileRef);
+        setEditList(userDoc.data().linkList);
+        dispatch(linkActions.saveList(editList));
+      } catch (error) {
+        console.log(error.message);
+      }
+    }
+
+    fetchData();
+
+    console.log("USE EFFECT");
+  }, []);
+
   //saves the temporary editList to the store list
   const saveList = async () => {
     try {

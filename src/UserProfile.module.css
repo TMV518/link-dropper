@@ -18,9 +18,10 @@ li {
 
 .link-item {
   width: 80vw;
-  margin-bottom: 2px;
+  margin-bottom: 5px;
 }
 
 .link-item button {
   width: 100%;
+  background-color: rgba(0, 128, 0, 0);
 }

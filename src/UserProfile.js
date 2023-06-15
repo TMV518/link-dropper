@@ -7,6 +7,7 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { uidActions } from "./store/index.js";
 import { Link } from "react-router-dom";
+import { collection } from "firebase/firestore";
 
 //dispatch actions
 import { titleActions } from "./store/index.js";
@@ -52,10 +53,13 @@ const UserProfile = (props) => {
       console.log(userProfileRef);
       const userDoc = await getDoc(userProfileRef);
       if (userDoc.exists()) {
+        //retreiving document data
         console.log("Document data:", userDoc.data());
 
-        // const iconRef = await getDownloadURL(ref(picsRef + "-profile.PNG"));
-        setUserObj(userDoc.data());
+        //setting profile pic
+        const iconRef = await getDownloadURL(ref(picsRef, id + "-profile.PNG"));
+
+        setUserObj({ ...userDoc.data(), profilePic: iconRef });
       } else {
         // userDoc.data() will be undefined in this case
         setPageDNE(true);
@@ -99,6 +103,8 @@ const UserProfile = (props) => {
                     style={{
                       borderStyle: userObj.borderStyle,
                       fontFamily: userObj.fontFamily,
+                      color: userObj.textColor,
+                      borderColor: userObj.textColor,
                     }}
                   >
                     {linkObj.name}

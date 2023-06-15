@@ -4,12 +4,11 @@ import uuid from "react-uuid";
 //initial state
 const initialState = {
   title: "My Links",
-  linkList: [
-    { name: "Instagram", link: "https://www.instagram.com", key: uuid() },
-  ],
+  linkList: [],
   bgColor: "",
   fontFamiy: "",
   textColor: "",
+  buttonColor: "",
   profilePic: "",
   profileRadius: 0,
   borderStyle: "none",
@@ -79,6 +78,17 @@ const textColorSlice = createSlice({
   },
 });
 
+//button color
+const buttonColorSlice = createSlice({
+  name: "buttonColor",
+  initialState: initialState,
+  reducers: {
+    setButtonColor(state, action) {
+      state.buttonColor = action.payload;
+    },
+  },
+});
+
 //font family
 const fontFamilySlice = createSlice({
   name: "fontFamily",
@@ -117,6 +127,7 @@ export const store = configureStore({
   reducer: {
     bgColor: bgColorSlice.reducer,
     textColor: textColorSlice.reducer,
+    buttonColor: buttonColorSlice.reducer,
     fontFamily: fontFamilySlice.reducer,
     borderStyle: borderSlice.reducer,
     profileRadius: profileRadiusSlice.reducer,
@@ -134,3 +145,4 @@ export const titleActions = titleSlice.actions;
 export const linkActions = linkSlice.actions;
 export const uidActions = uidSlice.actions;
 export const textColorActions = textColorSlice.actions;
+export const buttonColorActions = buttonColorSlice.actions;
