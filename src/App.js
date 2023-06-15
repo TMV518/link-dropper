@@ -56,48 +56,58 @@ function App() {
   );
   const linkList = useSelector((state) => state.linkList.linkList);
 
+  const [editing, setEditing] = useState(false);
   //posts profile changes to firebase
-  const postChanges = async () => {
-    console.log("POST CHANGES");
-    setProfile({
-      title: title,
-      linkList: linkList,
-      bgColor: "red",
-      fontFamily: fontFamily,
-      textColor: "white",
-      profilePic: "",
-      profileRadius: profileRadius,
-      borderStyle: borderStyle,
-    });
-    console.log(profile);
+  // const postChanges = async () => {
+  //   console.log("POST CHANGES");
+  //   setProfile({
+  //     title: title,
+  //     linkList: linkList,
+  //     bgColor: "red",
+  //     fontFamily: fontFamily,
+  //     textColor: "white",
+  //     profilePic: "",
+  //     profileRadius: profileRadius,
+  //     borderStyle: borderStyle,
+  //   });
+  //   console.log(profile);
 
-    await setDoc(doc(db, "test", "profile"), {
-      title: title,
-      linkList: linkList,
-      bgColor: "orange",
-      fontFamily: "dunno let's fix this later",
-      textColor: "white",
-      profilePic: "",
-      profileRadius: profileRadius,
-      borderStyle: borderStyle,
-    });
-  };
+  //   await setDoc(doc(db, "test", "profile"), {
+  //     title: title,
+  //     linkList: linkList,
+  //     bgColor: "orange",
+  //     fontFamily: "dunno let's fix this later",
+  //     textColor: "white",
+  //     profilePic: "",
+  //     profileRadius: profileRadius,
+  //     borderStyle: borderStyle,
+  //   });
+  // };
 
   return (
     <div className={classes["app-wrapper"]}>
       <Router>
-        <Link to={`user/${id}/edit`}>
-          <button>Edit</button>
-        </Link>
+        {!editing && (
+          <Link to={`user/${id}/edit`}>
+            <button
+              className={classes["top-left-button"]}
+              onClick={() => {
+                setEditing(true);
+              }}
+            >
+              Edit
+            </button>
+          </Link>
+        )}
 
-        <div className={classes["save-buttons"]}>
+        {/* <div className={classes["save-buttons"]}>
           <button className={classes.save} onClick={postChanges}>
             Save
           </button>
           <Link to={`user/${id}`}>
             <button className={classes.discard}>Discard</button>
           </Link>
-        </div>
+        </div> */}
 
         <Routes>
           <Route exact path="auth" element={<UserAuthPage />} />

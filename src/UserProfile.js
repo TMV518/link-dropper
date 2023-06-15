@@ -2,12 +2,13 @@ import { useEffect, useRef, useState } from "react";
 import { ColorPicker, useColor } from "react-color-palette";
 import "react-color-palette/lib/css/styles.css";
 import { db, storageRef } from "./firebase/firebase-config.js";
-import { collection, getDocs, getDoc, doc } from "firebase/firestore";
+import { getDoc, doc } from "firebase/firestore";
 import classes from "./UserProfile.module.css";
 import { ref, getDownloadURL } from "firebase/storage";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { uidActions } from "./store/index.js";
+import { Link } from "react-router-dom";
 
 //dispatch actions
 import { titleActions } from "./store/index.js";
@@ -71,7 +72,7 @@ const UserProfile = (props) => {
 
   //checking if loading
   if (loading) {
-    return <p>Loading...</p>;
+    return <p style={{ textAlign: "center" }}>Loading...</p>;
   }
   //checking if page exists
   if (!pageDNE) {

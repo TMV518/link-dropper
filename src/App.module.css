@@ -21,3 +21,8 @@
   width: 20vw;
   height: 10vw;
 }
+
+.top-left-button {
+  position: fixed;
+  top: 0;
+}
