@@ -21,6 +21,7 @@ import UserAuthPage from "./UserAuthPage";
 import UserProfile from "./UserProfile";
 import CustomColorPicker from "./reusable components/CustomColorPicker";
 import EditBgColor from "./edit components/EditBgColor";
+import EditTextColor from "./edit components/EditTextColor";
 
 function App() {
   const [profile, setProfile] = useState();
@@ -131,6 +132,7 @@ function App() {
             element={<EditTextBorder />}
           />
           <Route path="user/:id/edit/bg-color" element={<EditBgColor />} />
+          <Route path="user/:id/edit/text-color" element={<EditTextColor />} />
           <Route path="signin" element={<UserAuthPage />} />
           <Route path="user/:id" element={<UserProfile />} />
         </Routes>

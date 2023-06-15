@@ -62,8 +62,19 @@ const bgColorSlice = createSlice({
   name: "bgColor",
   initialState: initialState,
   reducers: {
-    setColor(state, action) {
+    setBgColor(state, action) {
       state.bgColor = action.payload;
+    },
+  },
+});
+
+//text color
+const textColorSlice = createSlice({
+  name: "textColor",
+  initialState: initialState,
+  reducers: {
+    setTextColor(state, action) {
+      state.textColor = action.payload;
     },
   },
 });
@@ -105,6 +116,7 @@ const profileRadiusSlice = createSlice({
 export const store = configureStore({
   reducer: {
     bgColor: bgColorSlice.reducer,
+    textColor: textColorSlice.reducer,
     fontFamily: fontFamilySlice.reducer,
     borderStyle: borderSlice.reducer,
     profileRadius: profileRadiusSlice.reducer,
@@ -121,3 +133,4 @@ export const profileRadiusActions = profileRadiusSlice.actions;
 export const titleActions = titleSlice.actions;
 export const linkActions = linkSlice.actions;
 export const uidActions = uidSlice.actions;
+export const textColorActions = textColorSlice.actions;
