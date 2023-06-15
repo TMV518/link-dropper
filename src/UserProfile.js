@@ -1,4 +1,3 @@
-import { useSelector } from "react-redux";
 import { useEffect, useRef, useState } from "react";
 import { ColorPicker, useColor } from "react-color-palette";
 import "react-color-palette/lib/css/styles.css";
@@ -7,16 +6,19 @@ import { collection, getDocs, getDoc, doc } from "firebase/firestore";
 import classes from "./UserProfile.module.css";
 import { ref, getDownloadURL } from "firebase/storage";
 import { useParams } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { uidActions } from "./store/index.js";
 
-const UserProfile = (props) => {
-  //custom hook from react-color-palette
-  //Made by Wondermarin on Github
-  //https://github.com/Wondermarin/react-color-palette
-  const [color, setColor] = useColor("hex", "#e26161");
+//dispatch actions
+import { titleActions } from "./store/index.js";
 
+const UserProfile = (props) => {
   const dispatch = useDispatch();
+
+  //getting this to let UserProfile know when redux state changes
+  /*this is used in useEffect() and allows page to refresh when profile
+  changes are made*/
+  const profileState = useSelector((state) => state);
 
   //used to get profile data through database
   //id parameter from URL
@@ -25,14 +27,16 @@ const UserProfile = (props) => {
   //setting UID in storage for URL purposes
   useEffect(() => {
     dispatch(uidActions.setUID(id));
+    //sending variables to store
+    dispatch(titleActions.setTitle(userObj.title));
     try {
       getProfile();
     } catch (error) {
       console.log(error.message);
     }
-  }, []);
+  }, [profileState]);
 
-  const userPofileRef = doc(db, "users", id);
+  const userProfileRef = doc(db, "users", id);
   const [userObj, setUserObj] = useState({});
 
   //storage ref used for images
@@ -46,8 +50,8 @@ const UserProfile = (props) => {
     try {
       setLoading(true);
       console.log("UID:", id);
-      console.log(userPofileRef);
-      const userDoc = await getDoc(userPofileRef);
+      console.log(userProfileRef);
+      const userDoc = await getDoc(userProfileRef);
       if (userDoc.exists()) {
         console.log("Document data:", userDoc.data());
 
@@ -90,11 +94,17 @@ const UserProfile = (props) => {
         <ul>
           {userObj.linkList?.map((linkObj) => {
             return (
-              <li
-                key={linkObj.key}
-                style={{ borderStyle: userObj.borderStyle }}
-              >
-                <a href={linkObj.link}>{linkObj.name}</a>
+              <li key={linkObj.key}>
+                <a href={linkObj.link}>
+                  <button
+                    style={{
+                      borderStyle: userObj.borderStyle,
+                      fontFamily: userObj.fontFamily,
+                    }}
+                  >
+                    {linkObj.name}
+                  </button>
+                </a>
               </li>
             );
           })}

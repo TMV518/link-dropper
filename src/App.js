@@ -117,28 +117,6 @@ function App() {
           <Route path="user/:id" element={<UserProfile />} />
         </Routes>
       </Router>
-
-      {/* <div
-        className={classes["profile-wrapper"]}
-        style={{ backgroundColor: profileColor, fontFamily: fontFamily }}
-      >
-        <img
-          className={classes["profile-photo"]}
-          alt="profile_photo"
-          src={require("./assets/penguin_placeholder.png")}
-          style={{ borderRadius: profileRadius }}
-        />
-        <h1>{title}</h1>
-        <ul>
-          {linkList.map((linkObj) => {
-            return (
-              <li key={linkObj.key} style={{ borderStyle: borderStyle }}>
-                <a href={linkObj.link}>{linkObj.name}</a>
-              </li>
-            );
-          })}
-        </ul>
-      </div> */}
     </div>
   );
 }

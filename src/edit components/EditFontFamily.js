@@ -3,11 +3,25 @@ import ListBoxButton from "../reusable components/ListBoxButton";
 import { useDispatch } from "react-redux";
 import { fontFamilyActions } from "../store/index";
 import UserProfile from "../UserProfile";
+import { useSelector } from "react-redux";
+import { db } from "../firebase/firebase-config";
+import { doc, updateDoc } from "firebase/firestore";
 
 const EditFontFamily = () => {
   const dispatch = useDispatch();
 
-  const fontChangeHandler = (event) => {
+  const fontFamily = useSelector((state) => state.fontFamily.fontFamily);
+  const id = useSelector((state) => state.uid.uid);
+
+  //getting reference to database
+  const userProfileRef = doc(db, "users", id);
+
+  const fontChangeHandler = async (event) => {
+    try {
+      await updateDoc(userProfileRef, { fontFamily: event.target.value });
+    } catch (error) {
+      console.log(error.message);
+    }
     dispatch(fontFamilyActions.setFontFamily(event.target.value));
   };
 
