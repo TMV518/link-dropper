@@ -1,5 +1,10 @@
 .auth__wrapper {
   position: relative;
+  background-color: rgb(32, 36, 92);
+}
+
+.auth__wrapper h1 {
+  color: white;
 }
 .auth__overlay {
   background-color: rgba(229, 229, 229, 0.76);
@@ -11,6 +16,9 @@
   top: 0;
 }
 
+.auth-box {
+  background-color: white;
+}
 .signup__wrapper,
 .login__wrapper {
   display: flex;

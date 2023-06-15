@@ -5,6 +5,8 @@ import { useState, useEffect, useRef } from "react";
 import { linkActions } from "../store/index";
 import uuid from "react-uuid";
 import UserProfile from "../UserProfile";
+import { updateDoc, doc } from "firebase/firestore";
+import { db } from "../firebase/firebase-config";
 
 const EditLinks = () => {
   //used for clearing form values
@@ -100,8 +102,18 @@ const EditLinks = () => {
     console.log(linkKey + " moved down");
   };
 
+  //getting db references
+  const id = useSelector((state) => state.uid.uid);
+
+  //getting reference to database
+  const userProfileRef = doc(db, "users", id);
   //saves the temporary editList to the store list
-  const saveList = () => {
+  const saveList = async () => {
+    try {
+      await updateDoc(userProfileRef, { linkList: editList });
+    } catch (error) {
+      console.log(error.message);
+    }
     dispatch(linkActions.saveList(editList));
     console.log(linkList);
   };

@@ -15,8 +15,8 @@ const EditSideButtons = () => {
       <Link to="links">
         <SideButton>Links</SideButton>
       </Link>
-      <Link>
-        <SideButton to="bg-color">bgColor</SideButton>
+      <Link to="bg-color">
+        <SideButton>bgColor</SideButton>
       </Link>
       <Link to="font">
         <SideButton>Font</SideButton>

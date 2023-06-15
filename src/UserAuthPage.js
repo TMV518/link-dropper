@@ -145,84 +145,88 @@ const UserAuthPage = () => {
 
   return (
     <div className={classes["auth__wrapper"]}>
-      <h2>Sign In</h2>
-      <div className={classes["top-buttons"]}>
-        <button
-          style={{
-            borderBottom: signUpPage ? "1px solid blue" : "none",
-          }}
-          onClick={signUpPageHandler}
-        >
-          Sign Up
-        </button>
-        <button
-          onClick={loginPageHandler}
-          style={{
-            borderBottom: loginPage ? "1px solid blue" : "none",
-          }}
-        >
-          Login
-        </button>
-      </div>
-      {signUpPage && (
-        <>
-          <p>Sign Up</p>
-          <form
-            className={classes["signup__wrapper"]}
-            onSubmit={(e) => {
-              signUp(e);
+      <h1>Link Dropper</h1>
+      <div className={classes["auth-box"]}>
+        <h2>Sign In</h2>
+        <div className={classes["top-buttons"]}>
+          <button
+            style={{
+              borderBottom: signUpPage ? "1px solid blue" : "none",
+            }}
+            onClick={signUpPageHandler}
+          >
+            Sign Up
+          </button>
+          <button
+            onClick={loginPageHandler}
+            style={{
+              borderBottom: loginPage ? "1px solid blue" : "none",
             }}
           >
-            <input
-              type="text"
-              placeholder="E-Mail"
-              id="e-mail__signup"
-              onChange={(e) => {
-                setSignUpEmail(e.target.value);
-              }}
-            />
-            <input
-              type="password"
-              placeholder="Password"
-              id="password__signup"
-              onChange={(e) => {
-                setSignUpPassword(e.target.value);
-              }}
-            />
-            <button type="submit">Submit</button>
-          </form>
-        </>
-      )}
+            Login
+          </button>
+        </div>
 
-      {loginPage && (
-        <>
-          <p>Log In</p>
-          <form
-            onSubmit={(e) => {
-              login(e);
-            }}
-            className={classes["login__wrapper"]}
-          >
-            <input
-              type="text"
-              placeholder="E-Mail"
-              id="e-mail__login"
-              onChange={(e) => {
-                setLoginEmail(e.target.value);
+        {signUpPage && (
+          <>
+            <p>Sign Up</p>
+            <form
+              className={classes["signup__wrapper"]}
+              onSubmit={(e) => {
+                signUp(e);
               }}
-            />
-            <input
-              type="password"
-              placeholder="Password"
-              id="password__login"
-              onChange={(e) => {
-                setLoginPassword(e.target.value);
+            >
+              <input
+                type="text"
+                placeholder="E-Mail"
+                id="e-mail__signup"
+                onChange={(e) => {
+                  setSignUpEmail(e.target.value);
+                }}
+              />
+              <input
+                type="password"
+                placeholder="Password"
+                id="password__signup"
+                onChange={(e) => {
+                  setSignUpPassword(e.target.value);
+                }}
+              />
+              <button type="submit">Submit</button>
+            </form>
+          </>
+        )}
+
+        {loginPage && (
+          <>
+            <p>Log In</p>
+            <form
+              onSubmit={(e) => {
+                login(e);
               }}
-            />
-            <button type="submit">Submit</button>
-          </form>
-        </>
-      )}
+              className={classes["login__wrapper"]}
+            >
+              <input
+                type="text"
+                placeholder="E-Mail"
+                id="e-mail__login"
+                onChange={(e) => {
+                  setLoginEmail(e.target.value);
+                }}
+              />
+              <input
+                type="password"
+                placeholder="Password"
+                id="password__login"
+                onChange={(e) => {
+                  setLoginPassword(e.target.value);
+                }}
+              />
+              <button type="submit">Submit</button>
+            </form>
+          </>
+        )}
+      </div>
       {loading && <div className={classes["auth__overlay"]}></div>}
 
       <p>{errorText}</p>

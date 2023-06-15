@@ -13,6 +13,12 @@
   background: none;
 }
 
+.list-box__overlay {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+}
+
 .list-box {
   width: 100vw;
   height: 50vh;

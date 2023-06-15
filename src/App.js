@@ -1,11 +1,7 @@
 import classes from "./App.module.css";
 import { useEffect, useRef, useState } from "react";
-import { ColorPicker, useColor } from "react-color-palette";
-import "react-color-palette/lib/css/styles.css";
-
 import EditPage from "./edit components/EditPage";
 import { useSelector } from "react-redux";
-
 import EditLinks from "./edit components/EditLinks";
 import EditTitle from "./edit components/EditTitle";
 import EditTextBorder from "./edit components/EditTextBorder";
@@ -23,13 +19,10 @@ import {
 import { auth } from "./firebase/firebase-config.js";
 import UserAuthPage from "./UserAuthPage";
 import UserProfile from "./UserProfile";
+import CustomColorPicker from "./reusable components/CustomColorPicker";
+import EditBgColor from "./edit components/EditBgColor";
 
 function App() {
-  //custom hook from react-color-palette
-  //Made by Wondermarin on Github
-  //https://github.com/Wondermarin/react-color-palette
-  const [color, setColor] = useColor("hex", "#e26161");
-
   const [profile, setProfile] = useState();
 
   const profileRef = collection(db, "test");
@@ -92,10 +85,24 @@ function App() {
             <button
               className={classes["top-left-button"]}
               onClick={() => {
-                setEditing(true);
+                setEditing((prevEditing) => !prevEditing);
+                console.log(editing);
               }}
             >
               Edit
+            </button>
+          </Link>
+        )}
+        {editing && (
+          <Link to={`../../user/${id}/`}>
+            <button
+              className={classes["top-left-button"]}
+              onClick={() => {
+                setEditing((prevEditing) => !prevEditing);
+                console.log(editing);
+              }}
+            >
+              Back
             </button>
           </Link>
         )}
@@ -123,6 +130,7 @@ function App() {
             path="user/:id/edit/text-border"
             element={<EditTextBorder />}
           />
+          <Route path="user/:id/edit/bg-color" element={<EditBgColor />} />
           <Route path="signin" element={<UserAuthPage />} />
           <Route path="user/:id" element={<UserProfile />} />
         </Routes>

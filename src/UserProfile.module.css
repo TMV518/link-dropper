@@ -15,3 +15,12 @@
 li {
   list-style-type: none;
 }
+
+.link-item {
+  width: 80vw;
+  margin-bottom: 2px;
+}
+
+.link-item button {
+  width: 100%;
+}

@@ -3,7 +3,7 @@ import CoverPage from "../reusable components/CoverPage";
 import { titleActions } from "../store/index";
 import { useState } from "react";
 import UserProfile from "../UserProfile";
-import UserProfileEdit from "../UserProfileEdit";
+
 import { db } from "../firebase/firebase-config.js";
 import { doc, updateDoc, setDoc, collection } from "firebase/firestore";
 const EditTitle = () => {

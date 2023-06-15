@@ -1,6 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import { ColorPicker, useColor } from "react-color-palette";
-import "react-color-palette/lib/css/styles.css";
 import { db, storageRef } from "./firebase/firebase-config.js";
 import { getDoc, doc } from "firebase/firestore";
 import classes from "./UserProfile.module.css";
@@ -95,7 +93,7 @@ const UserProfile = (props) => {
         <ul>
           {userObj.linkList?.map((linkObj) => {
             return (
-              <li key={linkObj.key}>
+              <li key={linkObj.key} className={classes["link-item"]}>
                 <a href={linkObj.link}>
                   <button
                     style={{
