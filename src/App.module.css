@@ -30,7 +30,7 @@
   border-radius: 10px;
   padding: 5px;
   background-color: rgb(0, 106, 255);
-  box-shadow: -1px -3px 10px rgba(0, 0, 0, 0.527);
+  box-shadow: -1px -3px 10px rgba(0, 0, 0, 0.312);
   color: white;
   animation: top-left-button__anim;
   animation-duration: 0.5s;

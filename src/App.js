@@ -22,6 +22,8 @@ import UserProfile from "./UserProfile";
 import CustomColorPicker from "./reusable components/CustomColorPicker";
 import EditBgColor from "./edit components/EditBgColor";
 import EditTextColor from "./edit components/EditTextColor";
+import NotFound from "./NotFound";
+import EditProfilePic from "./edit components/EditProfilePic";
 
 function App() {
   const [profile, setProfile] = useState();
@@ -42,13 +44,13 @@ function App() {
 
   const id = useSelector((state) => state.uid.uid);
 
-  const title = useSelector((state) => state.title.title);
-  const fontFamily = useSelector((state) => state.fontFamily.fontFamily);
-  const borderStyle = useSelector((state) => state.borderStyle.borderStyle);
-  const profileRadius = useSelector(
-    (state) => state.profileRadius.profileRadius
-  );
-  const linkList = useSelector((state) => state.linkList.linkList);
+  // const title = useSelector((state) => state.title.title);
+  // const fontFamily = useSelector((state) => state.fontFamily.fontFamily);
+  // const borderStyle = useSelector((state) => state.borderStyle.borderStyle);
+  // const profileRadius = useSelector(
+  //   (state) => state.profileRadius.profileRadius
+  // );
+  // const linkList = useSelector((state) => state.linkList.linkList);
 
   const [editing, setEditing] = useState(false);
   //posts profile changes to firebase
@@ -133,8 +135,13 @@ function App() {
           />
           <Route path="user/:id/edit/bg-color" element={<EditBgColor />} />
           <Route path="user/:id/edit/text-color" element={<EditTextColor />} />
+          <Route
+            path="user/:id/edit/profile-pic"
+            element={<EditProfilePic />}
+          />
           <Route path="signin" element={<UserAuthPage />} />
           <Route path="user/:id" element={<UserProfile />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>
     </div>
