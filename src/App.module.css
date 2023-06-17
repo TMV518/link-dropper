@@ -22,7 +22,24 @@
   height: 10vw;
 }
 
-.top-left-button {
+@font-face {
+  font-family: lato-normal;
+  src: url(./assets/fonts/lato-font/Lato-Regular.ttf);
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: lato-light;
+  src: url(./assets/fonts/lato-font/Lato-Light.ttf);
+  font-weight: lighter;
+}
+
+@font-face {
+  font-family: noto-sans;
+  src: url(./assets/fonts/NotoSans.ttf);
+}
+
+/* .top-left-button {
   position: fixed;
   margin-left: 10px;
   top: 2%;
@@ -34,13 +51,13 @@
   color: white;
   animation: top-left-button__anim;
   animation-duration: 0.5s;
-}
+} */
 
-@keyframes top-left-button__anim {
+/* @keyframes top-left-button__anim {
   from {
     transform: translateX(-100%);
   }
   to {
     transform: translateX(0%);
   }
-}
+} */

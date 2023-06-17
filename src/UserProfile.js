@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { uidActions } from "./store/index.js";
 import { Link } from "react-router-dom";
 import { collection } from "firebase/firestore";
+import { auth } from "./firebase/firebase-config.js";
 
 //dispatch actions
 import { titleActions } from "./store/index.js";
@@ -27,8 +28,10 @@ const UserProfile = (props) => {
   //setting UID in storage for URL purposes
   useEffect(() => {
     dispatch(uidActions.setUID(id));
+
     //sending variables to store
     dispatch(titleActions.setTitle(userObj.title));
+
     try {
       getProfile();
     } catch (error) {
@@ -79,41 +82,49 @@ const UserProfile = (props) => {
   //checking if page exists
   if (!pageDNE) {
     return (
-      <div
-        className={classes["profile-wrapper"]}
-        style={{
-          backgroundColor: userObj.bgColor,
-          fontFamily: userObj.fontFamily,
-          color: userObj.textColor,
-        }}
-      >
-        <img
-          className={classes["profile-photo"]}
-          alt="profile_photo"
-          src={userObj.profilePic}
-          style={{ borderRadius: userObj.profileRadius }}
-        />
-        <h1>{userObj.title}</h1>
-        <ul>
-          {userObj.linkList?.map((linkObj) => {
-            return (
-              <li key={linkObj.key} className={classes["link-item"]}>
-                <a href={linkObj.link}>
-                  <button
-                    style={{
-                      borderStyle: userObj.borderStyle,
-                      fontFamily: userObj.fontFamily,
-                      color: userObj.textColor,
-                      borderColor: userObj.textColor,
-                    }}
-                  >
-                    {linkObj.name}
-                  </button>
-                </a>
-              </li>
-            );
-          })}
-        </ul>
+      <div style={{ backgroundColor: userObj.bgColor, height: "100vh" }}>
+        {/*if logged in user id === profile id, then display edit button */}
+        {auth?.currentUser?.uid === id && (
+          <Link to={`../user/${id}/edit`}>
+            <button className={classes["top-left-button"]}>Edit</button>
+          </Link>
+        )}
+        <div
+          className={classes["profile-wrapper"]}
+          style={{
+            backgroundColor: userObj.bgColor,
+            fontFamily: userObj.fontFamily,
+            color: userObj.textColor,
+          }}
+        >
+          <img
+            className={classes["profile-photo"]}
+            alt="profile_photo"
+            src={userObj.profilePic}
+            style={{ borderRadius: userObj.profileRadius }}
+          />
+          <h1>{userObj.title}</h1>
+          <ul className={classes["link-item__list"]}>
+            {userObj.linkList?.map((linkObj) => {
+              return (
+                <li key={linkObj.key} className={classes["link-item"]}>
+                  <a href={linkObj.link}>
+                    <button
+                      style={{
+                        borderStyle: userObj.borderStyle,
+                        fontFamily: userObj.fontFamily,
+                        color: userObj.textColor,
+                        borderColor: userObj.textColor,
+                      }}
+                    >
+                      {linkObj.name}
+                    </button>
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
       </div>
     );
   } else {

@@ -122,9 +122,21 @@ const profileRadiusSlice = createSlice({
   },
 });
 
+//profile pic
+const profilePicSlice = createSlice({
+  name: "profilePic",
+  initialState: initialState,
+  reducers: {
+    setProfilePic(state, action) {
+      state.profilePic = action.payload;
+    },
+  },
+});
+
 //setting up store
 export const store = configureStore({
   reducer: {
+    profilePic: profilePicSlice.reducer,
     bgColor: bgColorSlice.reducer,
     textColor: textColorSlice.reducer,
     buttonColor: buttonColorSlice.reducer,
@@ -146,3 +158,4 @@ export const linkActions = linkSlice.actions;
 export const uidActions = uidSlice.actions;
 export const textColorActions = textColorSlice.actions;
 export const buttonColorActions = buttonColorSlice.actions;
+export const profilePicActions = profilePicSlice.actions;

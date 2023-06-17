@@ -4,6 +4,7 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+  padding-top: 10px;
 }
 
 .profile-photo {
@@ -18,10 +19,38 @@ li {
 
 .link-item {
   width: 80vw;
-  margin-bottom: 5px;
+  margin-bottom: 8px;
 }
 
 .link-item button {
   width: 100%;
   background-color: rgba(0, 128, 0, 0);
+  font-size: larger;
+}
+
+.link-item__list {
+  margin-top: 10px;
+}
+
+.top-left-button {
+  position: fixed;
+  margin-left: 10px;
+  top: 2%;
+  border: none;
+  border-radius: 10px;
+  padding: 5px;
+  background-color: rgb(0, 106, 255);
+  box-shadow: -1px -3px 10px rgba(0, 0, 0, 0.312);
+  color: white;
+  animation: top-left-button__anim;
+  animation-duration: 0.5s;
+}
+
+@keyframes top-left-button__anim {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0%);
+  }
 }

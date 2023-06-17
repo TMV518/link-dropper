@@ -64,6 +64,24 @@ const EditFontFamily = () => {
         >
           Impact
         </ListBoxButton>
+        <ListBoxButton
+          fontFamily="lato-normal"
+          value="lato-normal"
+          onClick={(e) => {
+            fontChangeHandler(e);
+          }}
+        >
+          Lato
+        </ListBoxButton>
+        <ListBoxButton
+          fontFamily="noto-sans"
+          value="noto-sans"
+          onClick={(e) => {
+            fontChangeHandler(e);
+          }}
+        >
+          Noto Sans
+        </ListBoxButton>
       </ListBox>
       <UserProfile />
     </>

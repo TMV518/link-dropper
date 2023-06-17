@@ -1,6 +1,7 @@
 .auth__wrapper {
   position: relative;
   background-color: rgb(32, 36, 92);
+  font-family: lato-normal;
 }
 
 .auth__wrapper h1 {
@@ -21,6 +22,7 @@
 }
 .signup__wrapper,
 .login__wrapper {
+  font-family: lato-normal;
   display: flex;
   flex-direction: column;
   margin-right: 3vw;
@@ -37,6 +39,14 @@
   animation-duration: 0.3s;
 }
 
+.signup__wrapper button {
+  font-family: lato-normal;
+}
+
+.login__wrapper button {
+  font-family: lato-normal;
+}
+
 .top-buttons {
   display: flex;
 }
@@ -44,6 +54,7 @@
 .top-buttons button {
   flex: 1;
   border: none;
+  font-family: lato-normal;
 }
 
 @keyframes login-form__anim {

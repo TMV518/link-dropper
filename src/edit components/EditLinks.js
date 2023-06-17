@@ -134,7 +134,6 @@ const EditLinks = () => {
   return (
     <>
       <CoverPage>
-        <button onClick={saveList}>Save</button>
         <h3>Edit the links on your page</h3>
         <h4>Add a link</h4>
         <div className={classes["edit-links__parent"]}>
@@ -203,6 +202,7 @@ const EditLinks = () => {
             })}
             {editList.length === 0 && <p>No links yet!</p>}
           </ul>
+          <button onClick={saveList}>Save</button>
         </div>
       </CoverPage>
       <UserProfile />

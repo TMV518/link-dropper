@@ -10,6 +10,7 @@ import { db } from "./firebase/firebase-config.js";
 import { collection, addDoc, setDoc, doc } from "firebase/firestore";
 import classes from "./UserAuthPage.module.css";
 import uuid from "react-uuid";
+import { useNavigate } from "react-router-dom";
 
 const UserAuthPage = () => {
   //AUTHENTICATION
@@ -39,6 +40,8 @@ const UserAuthPage = () => {
   //sets error text
   const [errorText, setErrorText] = useState("");
 
+  const navigate = useNavigate();
+
   //onAuthStateChanged() is like useEffect()
   //It is run when the auth state changes
   useEffect(() => {
@@ -62,11 +65,12 @@ const UserAuthPage = () => {
       bgColor: "white",
       fontFamily: "Times New Roman",
       textColor: "black",
-      profilePic: "./assets/penguin_placeholder.png",
+      profilePic: `${auth.currentUser.uid}-profile.png`,
       profileRadius: "50%",
       borderStyle: "none",
     };
 
+    //creating new user document with the name being the uid
     await setDoc(doc(userProfileDbRef, user.uid), defaultProfile);
   };
   //creates user account
@@ -83,6 +87,9 @@ const UserAuthPage = () => {
 
       console.log("UID:", auth.currentUser.uid);
       createProfile(auth.currentUser);
+
+      //navigate to the user's page upon login
+      navigate(`../user/${auth.currentUser.uid}`);
     } catch (error) {
       console.log(error.message);
       console.log("error.code: " + error.code);
@@ -113,6 +120,9 @@ const UserAuthPage = () => {
         loginEmail,
         loginPassword
       );
+
+      //navigate to the user's page upon login
+      navigate(`../user/${auth.currentUser.uid}`);
     } catch (error) {
       console.log(error.message);
       console.log("error.code: " + error.code);

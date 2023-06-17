@@ -34,13 +34,14 @@ function App() {
   const [profileColor, setProfileColor] = useState("white");
 
   useEffect(() => {
-    try {
-      console.log(profile[0]);
-      setProfileColor(profile[0].bgColor);
-    } catch (error) {
-      console.log(error.message);
-    }
-  }, [profile]);
+    // try {
+    //   console.log(profile[0]);
+    //   setProfileColor(profile[0].bgColor);
+    // } catch (error) {
+    //   console.log(error.message);
+    // }
+    userLoggedIn();
+  }, []);
 
   const id = useSelector((state) => state.uid.uid);
 
@@ -53,37 +54,17 @@ function App() {
   // const linkList = useSelector((state) => state.linkList.linkList);
 
   const [editing, setEditing] = useState(false);
-  //posts profile changes to firebase
-  // const postChanges = async () => {
-  //   console.log("POST CHANGES");
-  //   setProfile({
-  //     title: title,
-  //     linkList: linkList,
-  //     bgColor: "red",
-  //     fontFamily: fontFamily,
-  //     textColor: "white",
-  //     profilePic: "",
-  //     profileRadius: profileRadius,
-  //     borderStyle: borderStyle,
-  //   });
-  //   console.log(profile);
 
-  //   await setDoc(doc(db, "test", "profile"), {
-  //     title: title,
-  //     linkList: linkList,
-  //     bgColor: "orange",
-  //     fontFamily: "dunno let's fix this later",
-  //     textColor: "white",
-  //     profilePic: "",
-  //     profileRadius: profileRadius,
-  //     borderStyle: borderStyle,
-  //   });
-  // };
+  //auth checks
+  const userLoggedIn = () => {
+    let user = auth.currentUser;
+    console.log(user);
+  };
 
   return (
     <div className={classes["app-wrapper"]}>
       <Router>
-        {!editing && (
+        {/* {!editing && (
           <Link to={`user/${id}/edit`}>
             <button
               className={classes["top-left-button"]}
@@ -108,16 +89,7 @@ function App() {
               Back
             </button>
           </Link>
-        )}
-
-        {/* <div className={classes["save-buttons"]}>
-          <button className={classes.save} onClick={postChanges}>
-            Save
-          </button>
-          <Link to={`user/${id}`}>
-            <button className={classes.discard}>Discard</button>
-          </Link>
-        </div> */}
+        )} */}
 
         <Routes>
           <Route exact path="auth" element={<UserAuthPage />} />
