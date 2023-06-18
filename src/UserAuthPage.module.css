@@ -2,6 +2,7 @@
   position: relative;
   background-color: rgb(32, 36, 92);
   font-family: lato-normal;
+  height: 100vh;
 }
 
 .auth__wrapper h1 {
@@ -19,6 +20,7 @@
 
 .auth-box {
   background-color: white;
+  padding-bottom: 10px;
 }
 .signup__wrapper,
 .login__wrapper {
@@ -39,12 +41,21 @@
   animation-duration: 0.3s;
 }
 
-.signup__wrapper button {
-  font-family: lato-normal;
+.login__wrapper input,
+.signup__wrapper input {
+  border: none;
+  border-bottom: 1px solid rgb(146, 146, 146);
+  margin-bottom: 2px;
+  font-size: medium;
 }
 
+.signup__wrapper button,
 .login__wrapper button {
   font-family: lato-normal;
+  color: white;
+  background-color: rgb(32, 36, 92);
+  border: none;
+  font-size: medium;
 }
 
 .top-buttons {
@@ -84,5 +95,23 @@
 
   to {
     border-bottom: 1px solid blue;
+  }
+}
+
+/*Desktop only*/
+@media only screen and (min-width: 600px) {
+  .auth-box {
+    margin: 0 auto;
+    width: 50vw;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .signup__wrapper {
+    animation: none;
+  }
+
+  .login__wrapper {
+    animation: none;
   }
 }

@@ -8,7 +8,7 @@ const CoverPage = (props) => {
   return (
     <div className={classes["cover-page"]}>
       <Link to={`../../user/${id}/edit`}>
-        <button>X</button>
+        <button className={classes["close-button"]}>X Close</button>
       </Link>
       {props.children}
     </div>

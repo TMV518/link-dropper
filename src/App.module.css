@@ -22,6 +22,10 @@
   height: 10vw;
 }
 
+button:hover {
+  cursor: pointer;
+}
+
 @font-face {
   font-family: lato-normal;
   src: url(./assets/fonts/lato-font/Lato-Regular.ttf);
@@ -39,6 +43,15 @@
   src: url(./assets/fonts/NotoSans.ttf);
 }
 
+@font-face {
+  font-family: roboto-thin;
+  src: url(./assets/fonts/Roboto-Thin.ttf);
+}
+
+@font-face {
+  font-family: roboto-light;
+  src: url(./assets/fonts/Roboto-Light.ttf);
+}
 /* .top-left-button {
   position: fixed;
   margin-left: 10px;

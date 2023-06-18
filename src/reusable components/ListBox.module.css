@@ -44,3 +44,28 @@
     transform: translateY(0%);
   }
 }
+
+/*Desktop only*/
+@media only screen and (min-width: 600px) {
+  .list-box {
+    width: 20vw;
+    height: 98vh;
+  }
+
+  .list-box__parent {
+    bottom: 1;
+    left: 0;
+    animation-name: list-box__parent__anim__DESKTOP;
+    animation-duration: 0.3s;
+  }
+}
+
+@keyframes list-box__parent__anim__DESKTOP {
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(0%);
+  }
+}

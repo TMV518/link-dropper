@@ -8,3 +8,9 @@
 .list-box__button:hover {
   cursor: pointer;
 }
+
+@media only screen and (min-width: 600px) {
+  .list-box__button {
+    font-size: 2vw;
+  }
+}

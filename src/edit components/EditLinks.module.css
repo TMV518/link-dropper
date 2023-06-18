@@ -1,5 +1,6 @@
 .edit-links__parent {
   display: flex;
+  margin-left: 10px;
 }
 
 .edit-links {
@@ -20,4 +21,41 @@
   width: 3vh;
   height: 3vh;
   border: none;
+  color: white;
+  background-color: rgb(0, 106, 255);
+}
+
+.link-list {
+  margin-left: 10px;
+}
+
+.link-list ul {
+  width: 80vw;
+}
+
+.link-list ul li {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.link-list ul li button,
+.save-button {
+  width: 50px;
+  border: none;
+  background: none;
+  background-color: rgb(201, 201, 201);
+  color: rgb(79, 79, 79);
+}
+
+.save-button {
+  background-color: rgb(0, 106, 255);
+  color: white;
+}
+
+/*Desktop only*/
+@media only screen and (min-width: 600px) {
+  .link-list ul {
+    width: 40vw;
+  }
 }

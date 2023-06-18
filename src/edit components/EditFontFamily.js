@@ -38,6 +38,33 @@ const EditFontFamily = () => {
           Times New Roman
         </ListBoxButton>
         <ListBoxButton
+          fontFamily="lato-normal"
+          value="lato-normal"
+          onClick={(e) => {
+            fontChangeHandler(e);
+          }}
+        >
+          Lato
+        </ListBoxButton>
+        <ListBoxButton
+          fontFamily="noto-sans"
+          value="noto-sans"
+          onClick={(e) => {
+            fontChangeHandler(e);
+          }}
+        >
+          Noto Sans
+        </ListBoxButton>
+        <ListBoxButton
+          fontFamily="roboto-light"
+          value="roboto-light"
+          onClick={(e) => {
+            fontChangeHandler(e);
+          }}
+        >
+          Roboto-Light
+        </ListBoxButton>
+        <ListBoxButton
           fontFamily="Comic Sans MS"
           value="Comic Sans MS"
           onClick={(e) => {
@@ -63,24 +90,6 @@ const EditFontFamily = () => {
           }}
         >
           Impact
-        </ListBoxButton>
-        <ListBoxButton
-          fontFamily="lato-normal"
-          value="lato-normal"
-          onClick={(e) => {
-            fontChangeHandler(e);
-          }}
-        >
-          Lato
-        </ListBoxButton>
-        <ListBoxButton
-          fontFamily="noto-sans"
-          value="noto-sans"
-          onClick={(e) => {
-            fontChangeHandler(e);
-          }}
-        >
-          Noto Sans
         </ListBoxButton>
       </ListBox>
       <UserProfile />

@@ -9,6 +9,18 @@
   font-family: lato-normal;
 }
 
+.cover-page .close-button {
+  border: none;
+  background: none;
+  background-color: rgb(201, 201, 201);
+  color: rgb(79, 79, 79);
+}
+
+.cover-page button:active {
+  background-color: rgb(118, 118, 118);
+  color: rgb(235, 235, 235);
+}
+
 @keyframes cover-page__anim {
   from {
     transform: translateY(100%);

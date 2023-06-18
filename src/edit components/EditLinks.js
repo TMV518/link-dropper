@@ -202,7 +202,9 @@ const EditLinks = () => {
             })}
             {editList.length === 0 && <p>No links yet!</p>}
           </ul>
-          <button onClick={saveList}>Save</button>
+          <button className={classes["save-button"]} onClick={saveList}>
+            Save
+          </button>
         </div>
       </CoverPage>
       <UserProfile />

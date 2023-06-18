@@ -54,3 +54,11 @@ li {
     transform: translateX(0%);
   }
 }
+
+/*Desktop only*/
+@media only screen and (min-width: 600px) {
+  .profile-photo {
+    width: 10vw;
+    height: 10vw;
+  }
+}
