@@ -60,7 +60,7 @@ const UserProfile = (props) => {
         console.log("Document data:", userDoc.data());
 
         //setting profile pic
-        const iconRef = await getDownloadURL(ref(picsRef, id + "-profile.PNG"));
+        const iconRef = await getDownloadURL(ref(picsRef, `${id}/${id}.PNG`));
 
         setUserObj({ ...userDoc.data(), profilePic: iconRef });
       } else {

@@ -14,17 +14,22 @@ const EditProfilePic = () => {
   const id = useSelector((state) => state.uid.uid);
   const dispatch = useDispatch();
 
-  //getting reference to database
-  //const userProfileRef = doc(db, "users", id);
-  //storage ref used for images
-  const picsRef = ref(storageRef, "profile-pics");
-
-  const uploadImageHandler = () => {
+  const uploadImageHandler = async () => {
+    console.log(preview.name);
     if (preview == null) {
       alert('Either add a new image or click "X" to close');
     } else {
       try {
-        uploadBytes(picsRef, id + "-profile.PNG").then(() => {
+        //changing image name by creating new file object
+        var blob = preview.slice(0, preview.size, "image/png");
+        let newFile = new File([blob], `${id}.PNG`, {
+          type: "image/png",
+        });
+
+        //getting reference to database
+        //storage ref used for images
+        const newPicRef = ref(storageRef, `profile-pics/${id}/${newFile.name}`);
+        uploadBytes(newPicRef, newFile).then(() => {
           alert("Image uploaded");
         });
       } catch (error) {
@@ -41,7 +46,7 @@ const EditProfilePic = () => {
         type="file"
         accept=".jpg,.jpeg,.png"
         onChange={(e) => {
-          setPreview(URL.createObjectURL(e.target.files[0]));
+          setPreview(e.target.files[0]);
         }}
       />
       <br />
@@ -50,8 +55,7 @@ const EditProfilePic = () => {
       <img
         className={classes["image-preview"]}
         alt="Photo Preview"
-        src={preview}
-        style={{}}
+        // src={URL.createObjectURL(preview)}
       />
     </CoverPage>
   );

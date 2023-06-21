@@ -61,4 +61,8 @@ li {
     width: 10vw;
     height: 10vw;
   }
+
+  .link-item {
+    width: 50vw;
+  }
 }

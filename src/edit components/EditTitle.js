@@ -3,7 +3,7 @@ import CoverPage from "../reusable components/CoverPage";
 import { titleActions } from "../store/index";
 import { useState } from "react";
 import UserProfile from "../UserProfile";
-
+import classes from "./EditTitle.module.css";
 import { db } from "../firebase/firebase-config.js";
 import { doc, updateDoc, setDoc, collection } from "firebase/firestore";
 const EditTitle = () => {
@@ -35,15 +35,18 @@ const EditTitle = () => {
   return (
     <>
       <CoverPage>
-        <form onSubmit={titleChangeHandler}>
+        <form onSubmit={titleChangeHandler} className={classes["title-form"]}>
           <input
+            className={classes["title-input"]}
             type="text"
             placeholder="Enter a title"
             onChange={(e) => {
               setTempTitle(e.target.value);
             }}
           />
-          <button type="submit">Submit</button>
+          <button className={classes["title-button"]} type="submit">
+            Submit
+          </button>
         </form>
       </CoverPage>
       <UserProfile />
