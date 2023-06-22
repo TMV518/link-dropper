@@ -16,7 +16,7 @@ const EditSideButtons = () => {
         <SideButton>Links</SideButton>
       </Link>
       <Link to="bg-color">
-        <SideButton>bgColor</SideButton>
+        <SideButton>Bg Color</SideButton>
       </Link>
       <Link to="font">
         <SideButton>Font</SideButton>
@@ -24,14 +24,14 @@ const EditSideButtons = () => {
       <Link to="text-color">
         <SideButton>Text Color</SideButton>
       </Link>
+      <Link to="text-border">
+        <SideButton>Link Border</SideButton>
+      </Link>
       <Link to="profile-pic">
         <SideButton>Profile pic</SideButton>
       </Link>
       <Link to="profile-shape">
         <SideButton>Profile Shape</SideButton>
-      </Link>
-      <Link to="text-border">
-        <SideButton>Link Border</SideButton>
       </Link>
     </SideButtonHolder>
   );

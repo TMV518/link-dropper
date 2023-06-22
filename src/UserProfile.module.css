@@ -35,6 +35,20 @@ li {
 .top-left-button {
   position: fixed;
   margin-left: 10px;
+  top: 7%;
+  border: none;
+  border-radius: 10px;
+  padding: 5px;
+  background-color: rgb(0, 106, 255);
+  box-shadow: -1px -3px 10px rgba(0, 0, 0, 0.312);
+  color: white;
+  animation: top-left-button__anim;
+  animation-duration: 0.5s;
+}
+
+.sign-out-button {
+  position: fixed;
+  margin-left: 10px;
   top: 2%;
   border: none;
   border-radius: 10px;

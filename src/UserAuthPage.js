@@ -11,6 +11,8 @@ import { collection, addDoc, setDoc, doc } from "firebase/firestore";
 import classes from "./UserAuthPage.module.css";
 import uuid from "react-uuid";
 import { useNavigate } from "react-router-dom";
+import { ref, uploadBytes } from "firebase/storage";
+import { storageRef } from "./firebase/firebase-config";
 
 const UserAuthPage = () => {
   //AUTHENTICATION
@@ -65,13 +67,28 @@ const UserAuthPage = () => {
       bgColor: "white",
       fontFamily: "Times New Roman",
       textColor: "black",
-      profilePic: `${auth.currentUser.uid}-profile.png`,
+      profilePic: `${auth.currentUser.uid}.png`,
       profileRadius: "50%",
       borderStyle: "none",
     };
 
     //creating new user document with the name being the uid
     await setDoc(doc(userProfileDbRef, user.uid), defaultProfile);
+
+    //adding profile pic
+    //getting reference to database
+    //storage ref used for images
+
+    const newPicRef = ref(
+      storageRef,
+      `profile-pics/${user.uid}/${user.uid}.PNG`
+    );
+    uploadBytes(
+      newPicRef,
+      new File([], `${user.uid}.PNG`, {
+        type: "image/png",
+      })
+    );
   };
   //creates user account
   const signUp = async (event) => {

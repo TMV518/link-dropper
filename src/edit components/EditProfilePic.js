@@ -1,27 +1,24 @@
 import CoverPage from "../reusable components/CoverPage";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { useState } from "react";
 import classes from "./EditProfilePic.module.css";
-import { db } from "../firebase/firebase-config";
-import { doc } from "firebase/firestore";
 import { storageRef } from "../firebase/firebase-config";
-import { ref, getDownloadURL, uploadBytes } from "firebase/storage";
-const EditProfilePic = () => {
-  //   const borderRadius = useSelector((state) => state.borderStyle.borderStyle);
+import { ref, uploadBytes } from "firebase/storage";
 
-  const [preview, setPreview] = useState(null);
+const EditProfilePic = () => {
+  const [upload, setUpload] = useState(null);
+  const [preview, setPreview] = useState();
 
   const id = useSelector((state) => state.uid.uid);
-  const dispatch = useDispatch();
 
   const uploadImageHandler = async () => {
-    console.log(preview.name);
-    if (preview == null) {
+    if (upload == null) {
       alert('Either add a new image or click "X" to close');
     } else {
       try {
         //changing image name by creating new file object
-        var blob = preview.slice(0, preview.size, "image/png");
+        var blob = upload.slice(0, upload.size, "image/png");
+
         let newFile = new File([blob], `${id}.PNG`, {
           type: "image/png",
         });
@@ -40,23 +37,33 @@ const EditProfilePic = () => {
 
   return (
     <CoverPage>
-      <button onClick={uploadImageHandler}>Save</button>
-      <br />
-      <input
-        type="file"
-        accept=".jpg,.jpeg,.png"
-        onChange={(e) => {
-          setPreview(e.target.files[0]);
-        }}
-      />
-      <br />
-      Note: 1x1 proportioned images work best
-      <br />
-      <img
-        className={classes["image-preview"]}
-        alt="Photo Preview"
-        // src={URL.createObjectURL(preview)}
-      />
+      <div className={classes["edit-pic__parent"]}>
+        <br />
+        <input
+          type="file"
+          accept=".jpg,.jpeg,.png"
+          onChange={(e) => {
+            setUpload(e.target.files[0]);
+            setPreview(URL.createObjectURL(e.target.files[0]));
+          }}
+        />
+        <br />
+        Note: 1x1 proportioned images work best
+        <br />
+        <br />
+        <img
+          className={classes["image-preview"]}
+          alt="Photo Preview"
+          src={preview}
+        />
+        <br />
+        <button
+          className={classes["save-img-button"]}
+          onClick={uploadImageHandler}
+        >
+          Save
+        </button>
+      </div>
     </CoverPage>
   );
 };

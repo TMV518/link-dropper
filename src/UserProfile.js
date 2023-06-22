@@ -9,6 +9,7 @@ import { uidActions } from "./store/index.js";
 import { Link } from "react-router-dom";
 import { collection } from "firebase/firestore";
 import { auth } from "./firebase/firebase-config.js";
+import { signOut } from "firebase/auth";
 
 //dispatch actions
 import { titleActions } from "./store/index.js";
@@ -85,9 +86,21 @@ const UserProfile = (props) => {
       <div style={{ backgroundColor: userObj.bgColor, height: "100vh" }}>
         {/*if logged in user id === profile id, then display edit button */}
         {auth?.currentUser?.uid === id && (
-          <Link to={`../user/${id}/edit`}>
-            <button className={classes["top-left-button"]}>Edit</button>
-          </Link>
+          <>
+            <button
+              className={classes["sign-out-button"]}
+              onClick={async () => {
+                await signOut(auth);
+              }}
+            >
+              Sign Out
+            </button>
+            <br />
+            <br />
+            <Link to={`../user/${id}/edit`}>
+              <button className={classes["top-left-button"]}>Edit</button>
+            </Link>
+          </>
         )}
         <div
           className={classes["profile-wrapper"]}

@@ -1,3 +1,15 @@
+.edit-pic__parent {
+  margin-left: 5px;
+}
+
+.save-img-button {
+  width: 50px;
+  border: none;
+
+  background-color: rgb(0, 106, 255);
+  color: white;
+}
+
 .image-preview {
   object-fit: cover;
   width: 150px;

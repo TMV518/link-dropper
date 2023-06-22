@@ -134,8 +134,16 @@ const EditLinks = () => {
   return (
     <>
       <CoverPage>
+        <br />
+        <br />
+
         <h3>Edit the links on your page</h3>
-        <h4>Add a link</h4>
+        <h4>
+          Add a link
+          <br />
+          NOTE: Make sure it begins with "https://www."
+        </h4>
+        <br />
         <div className={classes["edit-links__parent"]}>
           <button className={classes["add-button"]} onClick={linkAddHandler}>
             +
@@ -159,6 +167,7 @@ const EditLinks = () => {
             />
           </div>
         </div>
+        <br />
         {!formIsValid && (
           <p style={{ color: "red" }}>Name and link are required fields</p>
         )}

@@ -19,11 +19,8 @@ const CustomColorPicker = (props) => {
       >
         Set Color
       </button>
-      <HexColorPicker
-        className={classes["the-color-picker"]}
-        color={color}
-        onChange={setColor}
-      />
+
+      <HexColorPicker color={color} onChange={setColor} />
     </ListBox>
   );
 };
