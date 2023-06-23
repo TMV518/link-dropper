@@ -216,7 +216,7 @@ const EditLinks = () => {
           </button>
         </div>
       </CoverPage>
-      <UserProfile />
+      {/* <UserProfile /> */}
     </>
   );
 };

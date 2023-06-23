@@ -64,33 +64,6 @@ function App() {
   return (
     <div className={classes["app-wrapper"]}>
       <Router>
-        {/* {!editing && (
-          <Link to={`user/${id}/edit`}>
-            <button
-              className={classes["top-left-button"]}
-              onClick={() => {
-                setEditing((prevEditing) => !prevEditing);
-                console.log(editing);
-              }}
-            >
-              Edit
-            </button>
-          </Link>
-        )}
-        {editing && (
-          <Link to={`../../user/${id}/`}>
-            <button
-              className={classes["top-left-button"]}
-              onClick={() => {
-                setEditing((prevEditing) => !prevEditing);
-                console.log(editing);
-              }}
-            >
-              Back
-            </button>
-          </Link>
-        )} */}
-
         <Routes>
           <Route exact path="auth" element={<UserAuthPage />} />
           <Route exact path="user/:id/edit" element={<EditPage />} />

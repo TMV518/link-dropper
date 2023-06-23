@@ -54,7 +54,7 @@ const UserProfile = (props) => {
     try {
       setLoading(true);
       console.log("UID:", id);
-      console.log(userProfileRef);
+      //console.log(userProfileRef);
       const userDoc = await getDoc(userProfileRef);
       if (userDoc.exists()) {
         //retreiving document data
@@ -87,14 +87,16 @@ const UserProfile = (props) => {
         {/*if logged in user id === profile id, then display edit button */}
         {auth?.currentUser?.uid === id && (
           <>
-            <button
-              className={classes["sign-out-button"]}
-              onClick={async () => {
-                await signOut(auth);
-              }}
-            >
-              Sign Out
-            </button>
+            <Link to={"../../signin"}>
+              <button
+                className={classes["sign-out-button"]}
+                onClick={async () => {
+                  await signOut(auth);
+                }}
+              >
+                Sign Out
+              </button>
+            </Link>
             <br />
             <br />
             <Link to={`../user/${id}/edit`}>

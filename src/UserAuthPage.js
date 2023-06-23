@@ -55,7 +55,7 @@ const UserAuthPage = () => {
   const userProfileDbRef = collection(db, "users");
 
   //creating the default profile upon account creation
-  const createProfile = async (user) => {
+  const createProfile = (user) => {
     //creating user profile page
     const defaultProfile = {
       title: "My Links",
@@ -72,9 +72,6 @@ const UserAuthPage = () => {
       borderStyle: "none",
     };
 
-    //creating new user document with the name being the uid
-    await setDoc(doc(userProfileDbRef, user.uid), defaultProfile);
-
     //adding profile pic
     //getting reference to database
     //storage ref used for images
@@ -83,13 +80,19 @@ const UserAuthPage = () => {
       storageRef,
       `profile-pics/${user.uid}/${user.uid}.PNG`
     );
-    uploadBytes(
-      newPicRef,
-      new File([], `${user.uid}.PNG`, {
-        type: "image/png",
-      })
+
+    //creating new user document with the name being the uid
+    //creating new profile pic file
+    setDoc(doc(userProfileDbRef, user.uid), defaultProfile).then(
+      uploadBytes(
+        newPicRef,
+        new File([], `${user.uid}.PNG`, {
+          type: "image/png",
+        })
+      )
     );
   };
+
   //creates user account
   const signUp = async (event) => {
     event.preventDefault();
