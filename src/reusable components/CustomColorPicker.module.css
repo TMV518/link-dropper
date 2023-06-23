@@ -8,6 +8,7 @@
   color: rgb(79, 79, 79);
   margin-top: 5px;
   margin-bottom: 5px;
+  font-size: 3vh;
 }
 
 .set-color-button:active {

@@ -66,6 +66,7 @@ function App() {
       <Router>
         <Routes>
           <Route exact path="auth" element={<UserAuthPage />} />
+          <Route index element={<UserAuthPage />} />
           <Route exact path="user/:id/edit" element={<EditPage />} />
           <Route path="user/:id/edit/title" element={<EditTitle />} />
           <Route path="user/:id/edit/links" element={<EditLinks />} />
@@ -86,7 +87,7 @@ function App() {
           />
           <Route path="signin" element={<UserAuthPage />} />
           <Route path="user/:id" element={<UserProfile />} />
-          <Route path="*" element={<NotFound />} />
+          {/* <Route path="*" element={<NotFound />} /> */}
         </Routes>
       </Router>
     </div>

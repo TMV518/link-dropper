@@ -1,14 +1,15 @@
 .side-button {
   border-radius: 100%;
   border: none;
-  width: 10vh;
-  height: 10vh;
+  width: 8vh;
+  height: 8vh;
   color: black;
   background-color: white;
   box-shadow: -1px -3px 10px rgba(0, 0, 0, 0.312);
   margin-bottom: 2vh;
   animation-name: button__anim;
   animation-duration: 0.8s;
+  font-size: 2vh;
 }
 
 /* .side-button img {

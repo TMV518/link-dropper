@@ -33,9 +33,10 @@ li {
 }
 
 .top-left-button {
+  font-size: 2.5vh;
   position: fixed;
   margin-left: 10px;
-  top: 7%;
+  top: 8%;
   border: none;
   border-radius: 10px;
   padding: 5px;
@@ -47,6 +48,7 @@ li {
 }
 
 .sign-out-button {
+  font-size: 2.5vh;
   position: fixed;
   margin-left: 10px;
   top: 2%;
